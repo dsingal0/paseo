@@ -1167,11 +1167,11 @@ function SheetStatusBarContent(props: SheetStatusBarContentProps) {
       disabled: boolean;
       isOpen: boolean;
     }) => (
-      <View pointerEvents="none" style={styles.prefsButton} testID="agent-status-bar-model">
+      <View pointerEvents="none" style={styles.compactPrefsButton} testID="agent-status-bar-model">
         {ProviderIcon ? (
           <ProviderIcon size={theme.iconSize.lg} color={theme.colors.foregroundMuted} />
         ) : null}
-        <Text style={styles.prefsButtonText} numberOfLines={1}>
+        <Text style={styles.prefsButtonText} numberOfLines={1} ellipsizeMode="tail">
           {shortModelLabel(selectedModelLabel)}
         </Text>
       </View>
@@ -2040,11 +2040,23 @@ const styles = StyleSheet.create((theme) => ({
     paddingHorizontal: theme.spacing[2],
     borderRadius: theme.borderRadius["2xl"],
   },
+  compactPrefsButton: {
+    height: 28,
+    minWidth: 0,
+    maxWidth: 140,
+    flexShrink: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    gap: theme.spacing[1],
+    paddingHorizontal: theme.spacing[2],
+    borderRadius: theme.borderRadius["2xl"],
+  },
   prefsButtonText: {
     color: theme.colors.foregroundMuted,
     fontSize: theme.fontSize.sm,
     fontWeight: theme.fontWeight.normal,
     flexShrink: 1,
+    minWidth: 0,
   },
   sheetSection: {
     gap: theme.spacing[2],

@@ -1895,11 +1895,9 @@ const styles = StyleSheet.create((theme: Theme) => ({
   },
   buttonRow: {
     flexDirection: "row",
-    flexWrap: "wrap",
     alignItems: "flex-end",
     justifyContent: "space-between",
     marginHorizontal: -6,
-    rowGap: theme.spacing[2],
   },
   leftButtonGroup: {
     minWidth: 0,
@@ -1910,11 +1908,9 @@ const styles = StyleSheet.create((theme: Theme) => ({
     gap: theme.spacing[0],
   },
   rightButtonGroup: {
-    width: "100%",
-    flexShrink: 1,
+    flexShrink: 0,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "flex-end",
     gap: theme.spacing[1],
   },
   attachButton: {
