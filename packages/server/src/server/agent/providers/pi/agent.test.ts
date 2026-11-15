@@ -1892,6 +1892,7 @@ describe("PiRpcAgentSession", () => {
       createConfig({
         systemPrompt: "Agent prompt",
         daemonAppendSystemPrompt: "Daemon prompt",
+        pluginAppendSystemPrompt: ["Plugin one", "Plugin two"],
       }),
     );
 
@@ -1910,7 +1911,9 @@ describe("PiRpcAgentSession", () => {
 
     await expect(
       applyPaseoExtensionSystemPrompt(actualLaunch.extensionPaths[0]!, "Pi project prompt"),
-    ).resolves.toBe("Pi project prompt\n\nAgent prompt\n\nDaemon prompt");
+    ).resolves.toBe(
+      "Pi project prompt\n\nAgent prompt\n\nDaemon prompt\n\nPlugin one\n\nPlugin two",
+    );
 
     await session.close();
   });
@@ -1933,6 +1936,7 @@ describe("PiRpcAgentSession", () => {
       },
       {
         daemonAppendSystemPrompt: "Daemon prompt",
+        pluginAppendSystemPrompt: ["Plugin one", "Plugin two"],
       },
     );
 
@@ -1956,7 +1960,9 @@ describe("PiRpcAgentSession", () => {
     ]);
     await expect(
       applyPaseoExtensionSystemPrompt(actualLaunch.extensionPaths[0]!, "Pi project prompt"),
-    ).resolves.toBe("Pi project prompt\n\nAgent prompt\n\nDaemon prompt");
+    ).resolves.toBe(
+      "Pi project prompt\n\nAgent prompt\n\nDaemon prompt\n\nPlugin one\n\nPlugin two",
+    );
   });
 
   test("updates model and thinking through Pi runtime commands", async () => {
